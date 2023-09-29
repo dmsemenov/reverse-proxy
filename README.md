@@ -1,5 +1,4 @@
-[![Total Downloads][ico-downloads]][link-downloads]
-
+# Nginx reverse proxy
 Working example of [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) with letsencrypt companion for your vds/vps.
 ### Usage
 
