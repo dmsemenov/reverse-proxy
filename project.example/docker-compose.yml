@@ -1,0 +1,30 @@
+version: '3.5'
+services:
+  nginx:
+    image: nginx:stable
+    volumes:
+      - ./:/var/www
+      - ./vhost.conf:/etc/nginx/conf.d/default.conf
+    expose:
+      - "80"
+      - "443"
+    environment:
+      - VIRTUAL_HOST=[YOURDOMAIN.COM]
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=[YOURDOMAIN.COM]
+      - LETSENCRYPT_EMAIL=[YOUR_EMAIL]
+    links:
+      - php-fpm
+    networks:
+      - "net"
+
+  php-fpm:
+    image: php:8.2-fpm
+    volumes:
+      - ./:/var/www
+    networks:
+      - "net"
+
+networks:
+  net:
+    external: true
